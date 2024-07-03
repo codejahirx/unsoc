@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block content %}
+    
+    {% for user in users %}
+    	{{ user.user_name }} - <a href="{% url 'restore' user.id %}">Restore</a>
+    {% endfor %}
+    
+    
+    
+
+{% endblock %}
+
+</body>
+</html>

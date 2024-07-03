@@ -34,6 +34,18 @@ def delete_user(request, pk):
     return redirect('dashboard')
 
 
+def deleted_users(request):
+    users = CustomUser.objects.filter(account_deleted=True)  # Only show deleted users
+    return render(request, 'deleted users.html', {'users': users})
+
+
+def restore_user(request, pk):
+    user = get_object_or_404(CustomUser, id=pk)
+    user.account_deleted = False
+    user.save()
+    return redirect('dashboard')
+
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
