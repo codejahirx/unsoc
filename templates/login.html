@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+
+{% block content %}
+
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% for fm in form %}
+            {{ fm.label_tag }} {{ fm }} {{ fm.errors }} <br> <br>
+        {% endfor %}
+        <input type="submit" value="Login">
+    </form>
+
+    <br>
+    
+    <script>
+    {% if messages %}
+        {% for message in messages %}
+            alert('{{ message }}')
+        {% endfor %}
+    {% endif %}
+    </script>
+
+{% endblock %}

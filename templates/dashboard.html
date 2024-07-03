@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+
+{% block content %}
+    
+{% for user in all_user %}
+    <span {% if user.account_suspended %}class="suspended-user"{% endif %}>
+        {{ user.user_name }}
+    </span> - 
+    <a href="{% url 'user_details' user.id %}">View</a> -
+    <a href="{% url 'suspend_user' user.id %}">Suspend</a> - 
+    <a href="{%  url 'delete_user' user.id %}">Delete</a> <br> <br>
+{% endfor %}
+
+    
+{% endblock %}
